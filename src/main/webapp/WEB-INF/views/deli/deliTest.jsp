@@ -71,6 +71,10 @@
         <!----> <!----></div>
     <a data-v-9131d49c="" class="button">조회</a> <!----></div>
 
+<%-- select 및 keyword를 입력받아 아래 /:carrier_id/:track_id 에 넣어주면 팝업 형태로 알려준다. --%>
 
+
+<%--<a href="https://tracker.delivery/#/:carrier_id/:track_id" target="_blank">배송조회</a>--%>
+<a href="https://tracker.delivery/#/kr.cjlogistics/645876315771" target="_blank">배송조회</a>
 </body>
 </html>
