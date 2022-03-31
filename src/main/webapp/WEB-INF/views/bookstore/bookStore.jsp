@@ -27,8 +27,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-<%--    <link href="${pageContext.request.contextPath}/resources/bookstore/lib/animate/animate.min.css" rel="stylesheet">--%>
-<%--    <link href="${pageContext.request.contextPath}/resources/bookstore/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">--%>
+    <%--    <link href="${pageContext.request.contextPath}/resources/bookstore/lib/animate/animate.min.css" rel="stylesheet">--%>
+    <%--    <link href="${pageContext.request.contextPath}/resources/bookstore/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">--%>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${pageContext.request.contextPath}/resources/bookstore/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 
 <body>
 
-<jsp:include page="deli/header.jsp"/>
+<jsp:include page="/WEB-INF/views/bookstore/header.jsp"/>
 
 <!-- Book List Start -->
 <div class="container-xxl py-5">
@@ -75,13 +75,31 @@
                 <a href="#">#키워드</a>&nbsp;
                 <a href="#">#키워드</a>&nbsp;
             </div>
+
+
             <div class="sort_box">
-                <button class="btn btn-sm btn-primary px-3">판매량</button>
-                <button class="btn btn-sm btn-primary px-3">최신</button>
-                <button class="btn btn-sm btn-primary px-3">상품명</button>
+                <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#">
+                            <h6 class="mt-n1 mb-0">판매량</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#">
+                            <h6 class="mt-n1 mb-0">최신순</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#">
+                            <h6 class="mt-n1 mb-0">상품명</h6>
+                        </a>
+                    </li>
+                </ul>
             </div>
+
+
+
         </div>
-        <br>
 
         <%-- 1 --%>
         <div class="row g-4 justify-content-center">
@@ -339,7 +357,8 @@
                             </div>
                             <div class="d-flex border-top">
                                 <small class="flex-fill text-center border-end py-2"> <a href="#" class="px-3">장바구니</a></small>
-                                <small class="flex-fill text-center border-end py-2"><a href="#" class="px-3">구매</a></small>
+                                <small class="flex-fill text-center border-end py-2"><a href="#"
+                                                                                        class="px-3">구매</a></small>
                                 <div class="flex-fill heart-flex">
                                     <i class="fa fa-solid fa-heart"></i>
                                 </div>
@@ -353,7 +372,7 @@
         </div>
         <!-- Book List End -->
 
-        <jsp:include page="deli/footer.jsp"/>
+        <jsp:include page="/WEB-INF/views/bookstore/footer.jsp"/>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
