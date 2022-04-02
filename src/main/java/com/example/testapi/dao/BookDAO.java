@@ -1,5 +1,6 @@
 package com.example.testapi.dao;
 
+import com.example.testapi.dto.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -7,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookDAO {
+    void insertBook(Book book) throws Exception;
 
 }
