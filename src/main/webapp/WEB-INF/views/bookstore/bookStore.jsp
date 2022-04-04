@@ -122,14 +122,20 @@
                 <div class="owl-carousel testimonial-carousel"
                      style="display: flex; flex-direction: column; justify-content: center; width: 56vw;">
 
-                    <c:forEach var="book" items="${bookList}"  begin="0" end="4">
+                    <c:forEach var="book" items="${bookList}" begin="0" end="4">
                         <div class="testimonial-item rounded p-3">
                             <img class="img-fluid flex-shrink-0 rounded" src="/book-store/book-img/${book.book_img}"
                                  alt="${book.book_img}란 이미지를 찾을 수 없습니다">
                             <div class="d-flex align-items-center" style="flex-direction: column">
                                 <br>
                                 <h5 class="mb-1">${book.book_subject}</h5>
-                                <h3 class="mb-1"><fmt:formatNumber value="${book.book_price}" pattern="#,###"/>원</h3>
+                                <span class="mb-1"
+                                      style="text-decoration: line-through;"><fmt:formatNumber
+                                        value="${book.book_price}" pattern="#,###"/>원</span> → <strong
+                                    class="mb-1"><fmt:formatNumber
+                                    value="${book.book_reprice}" type="number"
+                                    pattern="#,###"/>원</strong>
+                                    <%--                                <h3 class="mb-1"><fmt:formatNumber value="${book.book_price}" pattern="#,###"/>원</h3>--%>
                             </div>
                         </div>
                     </c:forEach>
@@ -140,11 +146,11 @@
         <%-- Slide Testimonial End--%>
 
 
-            <span style="display: flex; margin-left:4vw;"><jsp:include page="/WEB-INF/views/bookstore/pageList.jsp"/></span>
+        <%-- 페이지 네비 상단 --%>
+        <span style="display: flex; margin-left:4vw;"><jsp:include page="/WEB-INF/views/bookstore/pageList.jsp"/></span>
 
 
-
-            <c:choose>
+        <c:choose>
             <c:when test="${bookList!=null &&  pageInfo.listCount>0}">
                 <ul class="book_list">
                     <c:forEach var="book" items="${bookList}">
@@ -173,8 +179,10 @@
                                 <span class="org_price"
                                       style="text-decoration: line-through;"><fmt:formatNumber
                                         value="${book.book_price}" pattern="#,###"/>원</span> → <strong
-                                        class="sell_price"><fmt:formatNumber value="${book.book_price}"
-                                                                             pattern="#,###"/>원</strong>
+                                        class="sell_price"><fmt:formatNumber
+                                        value="${book.book_reprice}" type="number"
+                                        pattern="#,###"/>원</strong>
+                                        <%--                                        value="${book.book_price*(1-(book.book_discount/100))}" type="number"--%>
                                     <span class="dc_rate">[<strong>${book.book_discount}</strong>%↓]</span>
                                 </div>
                                 <br>
@@ -198,34 +206,8 @@
             </c:otherwise>
         </c:choose>
 
-    <jsp:include page="/WEB-INF/views/bookstore/pageList.jsp"/>
-
-<%--        <section id="pageList" style="display: flex; justify-content: center">--%>
-<%--            <c:choose>--%>
-<%--                <c:when test="${pageInfo.page<=1}">--%>
-<%--                    [이전]&nbsp;--%>
-<%--                </c:when>--%>
-<%--                <c:otherwise>--%>
-<%--                    <a href="/book-store?page=${pageInfo.page-1}">[이전]</a>&nbsp;--%>
-<%--                </c:otherwise>--%>
-<%--            </c:choose>--%>
-<%--            <c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${pageInfo.page==i }">[${i }]</c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <a href="/book-store?page=${i}">[${i }]</a>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-<%--            </c:forEach>--%>
-<%--            <c:choose>--%>
-<%--                <c:when test="${pageInfo.page>=pageInfo.maxPage }">--%>
-<%--                    [다음]--%>
-<%--                </c:when>--%>
-<%--                <c:otherwise>--%>
-<%--                    <a href="/book-store?page=${pageInfo.page+1}">[다음]</a>--%>
-<%--                </c:otherwise>--%>
-<%--            </c:choose>--%>
-<%--        </section>--%>
+        <%-- 페이지 네비 하단 --%>
+        <jsp:include page="/WEB-INF/views/bookstore/pageList.jsp"/>
 
 
     </div>

@@ -12,7 +12,7 @@
         <c:otherwise>
             <a href="/book-store?page=${pageInfo.page-1}">[이전]</a>&nbsp;
         </c:otherwise>
-    </c:choose>gcd
+    </c:choose>
     <c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
         <c:choose>
             <c:when test="${pageInfo.page==i }">[${i }]</c:when>
