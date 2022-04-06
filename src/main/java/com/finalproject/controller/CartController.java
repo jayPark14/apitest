@@ -86,6 +86,22 @@ public class CartController {
     // 주문 완료시 카트 날림
 
 
+    @PostMapping("/delcart")
+    public void delcart(@RequestBody String json) {
+        // 임시 세션
+        session.setAttribute("username", "jay");
+        String username = (String) session.getAttribute("username");
+        System.out.println("username : " + username);
+        try{
+            JSONObject inJson = new JSONObject(json);
+            int book_num = inJson.getInt("book_num");
+            cartService.deleteCart(book_num,username);
+        }catch(Exception e){
+        e.printStackTrace();
+        }
+    }
+
+
     // 임시
     @GetMapping("/order/detail")
     public String detail() {

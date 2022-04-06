@@ -231,14 +231,11 @@
 <script src="${pageContext.request.contextPath}/resources/bookstore/js/main.js"></script>
 
 <%-- sweetalert --%>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <%-- bookStore putCart Javascript --%>
 <script src="${pageContext.request.contextPath}/resources/bookstore/js/bookStore.js"></script>
 
-<script>
-
-</script>
 
 
 </body>
