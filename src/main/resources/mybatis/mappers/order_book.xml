@@ -11,7 +11,7 @@
 <!--
 CREATE TABLE `order_book` (
   `order_book_num` int NOT NULL,
-  `username` varchar(1000) DEFAULT NULL,
+  `order_num` varchar(1000) DEFAULT NULL,
   `order_book_bookNum` varchar(1000) DEFAULT NULL,
   `order_book_count` int DEFAULT NULL,
   PRIMARY KEY (`order_book_num`)
