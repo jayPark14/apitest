@@ -105,8 +105,8 @@ public class PaymentController {
             // 결제 수단도 받아오고, 주문번호도 총액도 받아와야한다.
             // order_method / order_num / total_price (이 값을 db에 넣자)
 
-            order.setOrder_method("tosspay");
-            order.setOrder_num("123456789");
+//            order.setOrder_method("tosspay");
+//            order.setOrder_num("123456789");
             System.out.println("주문방법:" + order.getOrder_method());
             System.out.println("주문번호" + order.getOrder_num());
             System.out.println("주문총액" + order.getTotal_price());
@@ -121,6 +121,7 @@ public class PaymentController {
             for(Cart cart : carts){
                 System.out.println(cart.getCart_bookNum()); // 출력을 넣는걸로 바꿔주면 된다.
                 System.out.println(cart.getCart_count()); // 슈퍼 다녀와서 수정하자.
+                System.out.println(order.getOrder_num()); // + 주문번호
             }
             // order_book을 테이블에 insert
             // 3. 마지막으로 username에 해당하는 cart DB를 전부 제거한다
