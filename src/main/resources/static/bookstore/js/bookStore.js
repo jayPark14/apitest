@@ -39,3 +39,4 @@ const buyNow = function (bookNum,bookPrice) {
     document.getElementById('buyNow').setAttribute("action", "/book-store/payment/now")
     document.getElementById('buyNow').submit()
 }
+
