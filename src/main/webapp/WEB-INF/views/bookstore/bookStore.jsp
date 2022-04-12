@@ -38,6 +38,11 @@
     <!-- Stylesheet -->
     <link href="${pageContext.request.contextPath}/resources/bookstore/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/bookstore/css/bookStore.css" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Stylish', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,24 +65,24 @@
 <div class="bookstore_container container-xxl py-5">
     <div class="text-center">
         <form action="/book-store/book-search" method="get" id="book_search">
-        <label>
-            <select class="btn-sm btn btn-primary select_cat" name="book_cat">
-                <option value="book_subject">도서명</option>
-                <option value="book_author">저자명</option>
-                <option value="book_content">내용</option>
-            </select>
-        </label>
-        <label for="inner_search"></label>
-        <input type="text" id="inner_search" class="inner_search" placeholder="검색어를 입력" name="book_keyword">
-        <button title="검색" type="submit" class="btn btn-sm btn-primary px-3">
-            <i class="fas fa-search"></i>
-        </button>
+            <label>
+                <select class="btn-sm btn btn-primary select_cat" name="book_cat">
+                    <option value="book_subject">도서명</option>
+                    <option value="book_author">저자명</option>
+                    <option value="book_content">내용</option>
+                </select>
+            </label>
+            <label for="inner_search"></label>
+            <input type="text" id="inner_search" class="inner_search" placeholder="검색어를 입력" name="book_keyword">
+            <button title="검색" type="submit" class="btn btn-sm btn-primary px-3">
+                <i class="fas fa-search"></i>
+            </button>
         </form>
         <%--            <input type="submit" id=""/>--%>
         <br>
         <div class="keyword_box">
             <c:if test="${!empty keyword}">
-           '${keyword}'을(를) 포함한 ${resultCount}건의 검색결과가 존재합니다.
+                '${keyword}'을(를) 포함한 ${resultCount}건의 검색결과가 존재합니다.
             </c:if>
         </div>
 
@@ -85,18 +90,17 @@
         <div class="sort_box">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
-                       href="/book-store/sort/sales" onclick="location.href='/book-store/sort/sales'">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3" id="sort_sales" href="/book-store/sort/sales">
                         <h6 class="mt-n1 mb-0">판매량</h6>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="/book-store/sort/newest">
+                    <a class="d-flex align-items-center text-start mx-3 pb-3" id="sort_newest" href="/book-store/sort/newest">
                         <h6 class="mt-n1 mb-0">최신순</h6>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="/book-store/sort/name">
+                    <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" id="sort_name" href="/book-store/sort/name">
                         <h6 class="mt-n1 mb-0">상품명</h6>
                     </a>
                 </li>
@@ -184,19 +188,19 @@
                                 </div>
                             </div>
                             <div class="book_add">
-<%--                                <c:choose>--%>
-<%--                                <c:when test="${username == admin}">--%>
+                                                                    <c:choose>
+                                                                    <c:when test="${not empty username}">
                                 <a class="btn-sm btn-primary" onclick="putCart(${book.book_num})">장바구니 담기</a>
                                 <a class="btn-sm btn-primary" onclick="buyNow(${book.book_num},${book.book_reprice})">바로 구매하기</a>
-<%--                                </c:when>--%>
-<%--                                    <c:otherwise>--%>
-<%--                                        <a class="btn-sm btn-primary" onclick="alert('로그인이 필요합니다')">장바구니 담기</a>--%>
-<%--                                        <a class="btn-sm btn-primary" onclick="alert('로그인이 필요합니다.')">바로 구매하기</a>--%>
-<%--                                    </c:otherwise>--%>
-<%--                                </c:choose>--%>
-<%--                                <c:if test = "${username == admin}">--%>
+                                                                    </c:when>
+                                                                        <c:otherwise>
+                                                                            <a class="btn-sm btn-primary" onclick="alert('로그인이 필요합니다')">장바구니 담기</a>
+                                                                            <a class="btn-sm btn-primary" onclick="alert('로그인이 필요합니다.')">바로 구매하기</a>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+                                                                    <c:if test = "${username == 'admin'}">
                                 <a class="btn-sm btn-primary" href="/book-store/delbook?book_num=${book.book_num}" style="background: red">교재 삭제</a>
-<%--                                </c:if>--%>
+                                                                    </c:if>
                                 <form id="buyNow" method="post">
                                     <input type="hidden" id="book_num" name="book_num"/>
                                     <input type="hidden" id="book_price" name="book_price"/>

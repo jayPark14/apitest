@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BookStoreServiceImpl implements BookStoreService{
@@ -79,7 +80,14 @@ public class BookStoreServiceImpl implements BookStoreService{
         pageInfo.setPage(page);
         pageInfo.setListCount(listCount);
         int startrow = (page-1)*10+1;
-        return bookDAO.selectSortList(startrow,type);
+        if(Objects.equals(type, "sales")){
+        return bookDAO.selectSortSales(startrow);
+        } else if(Objects.equals(type, "newest")){
+            return bookDAO.selectSortNum(startrow);
+        } else if(Objects.equals(type, "name")){
+            return bookDAO.selectSortSubject(startrow);
+        }
+        return null;
     }
 
 
